@@ -2,6 +2,7 @@
 
 const { json } = require("body-parser");
 const UserModel = require("../model/user-model");
+const TodoModel = require("../model/todo-model");
 
  getalluser=async(req,res)=>{
     try{
@@ -45,5 +46,60 @@ login = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+// todo items
+getTodo=async(req,res)=>{
 
-module.exports={register,login,getalluser,}
+  try{
+    const username = req.session.user; // Assuming user is stored in session (replace with your implementation)
+    if (!username){
+      res.json({
+        msg:"Unauthorized. Please login",
+      })
+    }
+      const user = await UserModel.find({username})
+      if (!user) {
+        return res.status(404).send('User not found');
+      }
+
+      const todo = await TodoModel.find({user:user._id})
+      res.json({
+      status:true,
+      msg:"Todo items",
+      data:todo
+      })
+  }
+  catch (error) {
+      res.status(500).json({ error: "oops Somethin went " });
+    }
+}
+
+createTodo=async(req,res)=>{
+
+  try{
+   const payload = req.body;
+   const title = payload.title;
+   const username = payload.username; // Assuming user is stored in session (replace with your implementation)
+
+   if (!username || !title) {
+     return res.status(400).send('Title and username are required fields');
+   }
+
+   const user = await UserModel.findOne({ username });
+
+   if (!user) {
+     return res.status(404).send('User not found');
+   }
+       
+    const newTodo = new TodoModel({ title, user: user._id });
+    await newTodo.save();
+      res.json({
+      status:true,
+      msg:"Todo items added sucessfully",
+      data:newTodo
+      })
+  }
+  catch (error) {
+      res.status(500).json({ error: "oops Somethin went wrong" });
+    }
+}
+module.exports={register,login,getalluser,getTodo,createTodo}
