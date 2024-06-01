@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif; /* Choose your preferred font family */
+    background-color: #f0f0f0; /* Light gray background */
+    min-height: 100vh; /* Set minimum viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #fff; /* White background for content area */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 400px; /* Optional maximum width for responsiveness */
+    animation: slideInUp 0.5s ease-in-out forwards; /* Slide-in animation */
+  }
+@keyframes slideInUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .input-group {
+    margin-bottom: 15px;
+  }
+  input{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+.forget-password {
+    margin-top: 10px 0px;
+    font-size: 0.8em; /* Adjust font size for forget password */
+    color: #aaa;
+    float: right;
+  }
+.span:hover {
+    color: #000; /* Change hover color for forget password text */
+    cursor: pointer; /* Add hover cursor for clickable behavior */
+  }
+  .button-group
+  {
+    margin-top: 50px;
+    clear: both;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Green button color */
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin: 10px 5px;
+  }
+  
+  .button:hover {
+    background-color: #3e8e41; /* Darker green on hover */
+  }
+  .button:hover {
+    transform: scale(1.05); /* Increase button size by 5% on hover */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+  }
+   

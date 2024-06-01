@@ -1,0 +1,80 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #eee;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  .todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+   .buttons{
+    display: inline-block;
+    padding: 5px;
+   }
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    position: relative; /* Required for delete button animation */
+    cursor: pointer; /* Indicate clickable item */
+  }
+  .todo-item:hover {
+    background-color: #f5f5f5; /* Slight hover effect */
+  }
+  
+/* Edit and Delete Buttons */
+.todo-actions {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in animation */
+  }
+  
+  .todo-item:hover .todo-actions {
+    opacity: 1; /* Buttons appear on hover */
+    display: block;
+  }
+  .delete-btn {
+    color: #c0392b; /* Red for delete */
+  }
+  
+  .edit-btn {
+    color: #2980b9; /* Blue for edit */
+    margin-left: 10px; /* Spacing between buttons */
+  }
+  
+ 
+  .todo-item:nth-child(odd) {
+    animation: slideInLeft 0.3s ease-in-out; /* Animation for odd items */
+  }
+  .todo-item:nth-child(even) {
+    animation: slideInRight 0.3s ease-in-out; /* Animation for even items */
+  }
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%); /* Start off-screen to*/
+    }
+    to{
+         transform: translateX(0); 
+    }
+}
+@keyframes slideInRight {
+    from {
+      transform: translateX(100%); /* Start off-screen to the right */
+    }
+    to {
+      transform: translateX(0); /* Slide into view */
+    }
+  }
